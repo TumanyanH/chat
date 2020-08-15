@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="/styles/chatroom.css">
+
+<div class="container">
+  
+  <div class="person-list persons">
+    <div class="person-search">
+      <input type="text" id="search-input" placeholder="Seach...">
+    </div>
+    <ul class="list-items persons-list">
+      <% if(chats.length == 0) {
+        %>
+        <div style="display: flex; justify-content: center;">
+          <p style="color: white; font-family: Arial, Helvetica, sans-serif;">No chats yet, you can search for users!</p> 
+        </div>
+        <%
+      } else {
+        chats.forEach(chat => {
+          %>
+          <li class="item" data-user-id="<%= chat._id %>">
+            <div>
+              <div class="profile-picture-container">
+                <img src="/images/profile.png" alt="">
+              </div>
+              <div class="profile-details">
+                <span class="username">@<%= chat.login %></span>
+                <span class="user-status-online">online</span>
+              </div>
+            </div>
+          </li>  
+          <%
+        })
+      } %>
+    </ul>
+
+    <ul class="list-items persons-search-list">
+      
+    </ul>
+
+  </div>
+
+  <div class="chat-room default-chat-room">
+    <div class="select-chat" style="display : flex; justify-content: center;">
+      <div style="width: 80%; 
+                  font-family: Arial, Helvetica, sans-serif;
+                  border: 3px solid lightslategray;
+                  background: rgb(119,136,153, 0.8); 
+                  color: white;
+                  padding: 20px;
+                  margin-top: 20px;
+                  font-size: 24px;
+                  text-align: center;
+                  border-radius: 20px;">
+        Select one of your chats!
+      </div>
+    </div>
+    <div class="loader" style="display: none; justify-content: center; margin-top: 30%;" >
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
+  </div>
+
+  
+
+  <div class="chat-room opened-chat-room" style="display: none;">
+    <div class="chat-header">
+      <div class="person-picture">
+        <img src="/images/profile.png" alt="">
+      </div>
+
+      <div class="person-details">
+        <div class="person-name">Person name</div>
+        <div class="person-status">Online now</div>
+      </div>
+    </div>
+
+    <!-- 
+    from-me class
+    from-them class  
+    -->
+    <div class="chat-messages">
+      
+    </div>
+
+
+    <div class="chat-input">
+      <textarea type="text" class="message" placeholder="Message..."></textarea>
+      <button type="button" class="send-message">SEND</button>
+    </div>
+  </div>
+  
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/scripts/chatroom.js"></script>

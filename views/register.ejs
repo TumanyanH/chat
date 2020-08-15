@@ -1,0 +1,116 @@
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    .container {
+        margin-top: 250px;
+    }
+    #register-form {
+        width: 20vw;
+        margin-left: 40vw;
+    }
+    #register-form input {
+        width: 100%;
+        height: 30px;
+        font-size: 15px;
+        background: aliceblue;
+        border: 2px solid lightgray;
+        border-radius: 8px;
+        outline: none;
+        margin-bottom: 10px;
+        padding: 5px 15px;
+    }
+    #register-form button {
+        width: 10vw;
+        padding: 10px 0;
+        border: none;
+        background: skyblue;
+        border-radius: 8px;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .register-btn {
+        display: flex;
+        justify-content: center;
+    }
+    #login {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    #login a {
+        margin-left: 3px;
+    }
+    #errors {
+        width: 40vw;
+        margin-left: 30vw;
+        padding: 15px 30px;
+        background: rgb(227, 164, 164);
+        color: rgb(165, 44, 44);
+        list-style-type: disc;
+        border-radius: 15px;
+    }
+    #errors li {
+        margin-top: 5px;
+        margin-left: 40px;
+        margin-right: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    @media (max-width: 768px) {
+        .container {
+            margin-top: 50vw;
+        }
+        #register-form {
+            margin-left: 0;
+            width: 100%;
+        }
+        #login {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #register-form input {
+            width: 100%;
+        }
+        #register-form button {
+            width: 100%;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .register-btn {
+            display: block;
+        }
+
+    }
+</style>
+
+<div class="container">
+    <% if(errorMessages) { %>
+        <ul id="errors">
+        <% errorMessages.forEach(error => { %>
+            <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+    
+    <div id="register-form">
+        <form action="/register" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <input type="text" name="login" placeholder="Login..."> <br>
+            <input type="email" name="email" placeholder="Email..."> <br>
+            <input type="password" name="password" placeholder="Password..."> <br>
+            <input type="password" name="rePassword" placeholder="Reenter password..."> <br>
+            <div class="register-btn">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+    
+        <div id="login">
+            Already a user? <a href="/login">Login</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,308 @@
+/* #86BB71 - green */
+* {
+    box-sizing: border-box;
+}
+body {
+    background: #444753;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    overflow: hidden;
+}
+
+.person-list {
+    padding: 20px;
+    width: 20%;
+    background: transparent;
+    border-right: 2px solid white;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+.person-search {
+    display: flex;
+    justify-content: center; 
+    margin: 10px;
+}
+.person-search input {
+    width: 100%;
+    outline: none;
+    height: 30px;
+    font-size: 20px;
+    background: #6A6C75;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+.list-items {
+    display: block;
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    margin-top: 20px !important;
+    padding: 0;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+.item {
+    width: 100%;
+    padding: 5px 0;
+}
+.item .active {
+    background: #6A6C75;
+}
+.item div {
+    width: 100%;
+    max-height: 100px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.item:hover {
+    background: #6A6C75;
+}
+.item div .profile-picture-container {
+    width: 30%;
+    float: left;
+}
+.item div .profile-picture-container img {
+    margin-left: 10%;
+    border-radius: 50%;
+    border: 2px solid #6A6C75;
+    width: 80%;
+}
+.item div .profile-details {
+    padding: 10px 30px;
+    float: left;
+    width: 70%;
+}
+.item div .profile-details .username {
+    display: block;
+    font-size: 24px;
+    font-weight:lighter;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.item div .profile-details .user-status-online {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: lightgreen;
+}
+.item div .profile-details .user-status-offline {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: pink;
+}
+
+.chat-room {
+    width: 80%;
+    margin-left: 20%;
+    height: 100%;
+    position: fixed;
+    float: left;
+    background: #C5DDEB;
+    height: 100%;
+}
+
+.chat-header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 80px;
+    border-bottom: 2px solid white;
+}
+.chat-header .person-picture {
+    width: 60px;
+    float: left;
+    margin: 10px 40px;
+}
+.chat-header .person-picture img {
+    width: 100%;
+    border: 4px solid #86BB71;
+    border-radius: 50%;
+}
+.chat-header .person-details {
+    float: left;
+    margin-top: 15px;
+}
+.chat-header .person-details .person-name {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+.chat-header .person-details .person-status {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #86BB71;
+    font-weight: bolder;
+}
+
+.chat-messages {
+    width: 100%; 
+    height: calc(100% - 210px);
+    position: fixed;
+    overflow-y: auto;
+}
+
+p.from-me, p.from-them {
+    display: block;
+    max-width: 30%;
+    word-wrap: break-word;
+    margin-bottom: 12px;
+    line-height: 24px;
+    position:relative;
+    padding:10px 20px;
+    border-radius:25px;
+}
+p.from-me:before, p.from-me:after, p.from-them:before, p.from-them:after {
+    content:"";
+    position:absolute;
+    bottom:-2px;
+    height:20px;
+}
+
+.from-me {
+	color:white; 
+	background:#0B93F6;
+    align-self: flex-end;
+    margin-left: 48%;
+
+}	
+.from-me:before {
+    right:-7px;
+    border-right:20px solid #0B93F6;
+    border-bottom-left-radius: 16px 14px;
+    transform:translate(0, -2px);
+}
+
+.from-me:after {
+    right:-56px;
+    width:26px;
+    background: #C5DDEB;
+    border-bottom-left-radius: 10px;
+    transform:translate(-30px, -2px);
+}
+
+.from-them {
+	background:white;
+    color:black;
+    margin-left: 30px;
+}	
+.from-them:before {
+    left:-7px;
+    border-left:20px solid white;
+    border-bottom-right-radius: 16px 14px;
+    transform:translate(0, -2px);
+}
+
+.from-them:after {
+    left:4px;
+    width:26px;
+    background:#C5DDEB;
+    border-bottom-right-radius: 10px;
+    transform:translate(-30px, -2px);
+}
+
+.chat-room .chat-input {
+    position: absolute;
+    width: 100%;
+    border-top: 1px solid white;
+    bottom: 0;
+    height: 130px;
+}
+.chat-room .chat-input textarea {
+    margin: 10px 5%;
+    width: 90%;
+    height: auto;
+    border: 2px solid white;
+    background: #ebeff1;
+    border-radius: 10px;
+    font-size: 20px;
+    outline : none;
+    padding: 5px 15px;
+}
+.chat-room .chat-input button {
+    float: right;
+    margin: 0 5% 10px 0;
+    padding: 5px 20px;
+    border: none;
+    background: lightskyblue;
+    font-size: 20px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+
+.persons-search-list {
+    display: none;
+}
+.persons-list {
+    display: block;
+}
+
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  
