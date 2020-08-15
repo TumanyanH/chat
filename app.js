@@ -11,7 +11,7 @@ const cookieParser = require('cookie-parser')
 const MongoDBStore = require('connect-mongodb-session')(session);
 
 const store = new MongoDBStore({
-  uri: process.env.MONGO_URL,
+  uri: process.env.MONGO,
   collection: 'sessions'
 });
 
@@ -96,7 +96,7 @@ app.use((error, req, res, next) => {
 
 
 
-httpServer.listen(3000, (err, res) => {
+httpServer.listen(process.env.PORT || 5000, (err, res) => {
   if(err) {
     console.log(err)
   } else {
