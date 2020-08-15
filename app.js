@@ -11,7 +11,7 @@ const cookieParser = require('cookie-parser')
 const MongoDBStore = require('connect-mongodb-session')(session);
 
 const store = new MongoDBStore({
-  uri: 'mongodb://localhost:27017/chat',
+  uri: process.env.MONGO_URL,
   collection: 'sessions'
 });
 
